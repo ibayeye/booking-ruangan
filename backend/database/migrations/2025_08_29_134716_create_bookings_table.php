@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('room_id')->constrained('rooms')->onDelete('cascade');
             $table->date('date');
             $table->time('start_time');
-            $table->string('duration');
+            $table->integer('duration');
             $table->text('purpose');
             $table->enum('status', ['submit', 'approved', 'rejected'])->default('submit');
             $table->timestamps();

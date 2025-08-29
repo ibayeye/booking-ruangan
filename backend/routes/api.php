@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\RoomController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -13,27 +14,21 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/me', [AuthController::class, 'me']);
     // Room
     Route::get('/room', [RoomController::class, 'getAll']);
-    // Route::get('/savings', [SavingController::class, 'getAll']);
 
-    // Route::get('/loans', [LoanController::class, 'index']);
-    // Route::post('/loans', [LoanController::class, 'store']);
-
-    // Route::post('/settlement', [SettlementController::class, 'store']);
+    // Booking
+    Route::post('/booking', [BookingController::class, 'create']);
+    Route::get('/booking', [BookingController::class, 'getAll']);
+    Route::put('/booking/{id}', [BookingController::class, 'update']);
+    Route::delete('/booking/{id}', [BookingController::class, 'destroy']);
 
     Route::middleware('role:admin')->group(function () {
         // Room
         Route::post('/room', [RoomController::class, 'create']);
-        // Route::get('/savings/{id}', [SavingController::class, 'getById']);
         Route::put('/room/{id}', [RoomController::class, 'update']);
         Route::delete('/room/{id}', [RoomController::class, 'destroy']);
 
-        //Loans
-        // Route::post('/loans/approve/{id}', [LoanController::class, 'approve']);
-        // Route::post('/loans/reject/{id}', [LoanController::class, 'reject']);
-
-        //Settlements
-        // Route::get('/settlement', [SettlementController::class, 'index']);
-        // Route::post('/settlement/approve/{id}', [SettlementController::class, 'approve']);
-        // Route::post('/settlement/reject/{id}', [SettlementController::class, 'reject']);
+        // Booking
+        Route::post('/booking/approve/{id}', [BookingController::class, 'approve']);
+        Route::post('/booking/reject/{id}', [BookingController::class, 'reject']);
     });
 });
