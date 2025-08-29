@@ -13,6 +13,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        $this->call([
+            RoomsTableSeeder::class,
+        ]);
 
         User::create([
             'name' => 'Admin',
