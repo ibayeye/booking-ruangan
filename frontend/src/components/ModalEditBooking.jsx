@@ -46,8 +46,6 @@ const ModalEditBooking = ({ isOpen, onClose, booking, rooms, onConfirm }) => {
       purpose: formData.purpose,
     };
 
-    console.log("Data yang akan dikirim ke API:", updatedData);
-
     onConfirm({
       ...updatedData,
       id: booking.id,

@@ -12,14 +12,17 @@ const Sidebar = () => {
       {
         name: "Booking",
         icon: <FaDiceD6 />,
-        children: [{ name: "Daftar Booking", path: "/admin/bookings" }],
+        path: "/admin/bookings",
+        // children: [
+        //   { name: "Daftar Booking", path: "/admin/bookings" }
+        // ],
       },
       {
         name: "Room",
         icon: <FaDiceD6 />,
         children: [
           { name: "Data Room", path: "/admin/rooms" },
-          { name: "Tambah Simpanan", path: "/add-savings" },
+          { name: "Tambah Room", path: "/admin/add-room" },
         ],
       },
     ],
@@ -47,7 +50,6 @@ const Sidebar = () => {
 
   const roleMenus = user ? menus[user.role] : [];
 
-  // state untuk simpan submenu mana yang open
   const [openMenu, setOpenMenu] = useState(null);
 
   const toggleMenu = (name) => {

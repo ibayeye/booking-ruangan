@@ -8,7 +8,6 @@ export const loginUser = createAsyncThunk(
       const res = await api.post("/login", { email, password });
       const { token, user } = res.data?.data;
 
-      // Set token di header untuk request berikutnya
       api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
       return { token, user };

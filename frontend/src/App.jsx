@@ -12,6 +12,8 @@ import BookingUser from "./pages/user/BookingUser";
 import RoomUser from "./pages/user/RoomUser";
 import ListBookingUser from "./pages/user/ListBookingUser";
 import BookingAdmin from "./pages/admin/BookingAdmin";
+import RoomAdmin from "./pages/admin/RoomAdmin";
+import ListRoomAdmin from "./pages/admin/ListRoomAdmin";
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.auth);
@@ -93,7 +95,7 @@ function App() {
 
           {/* ADMIN */}
           <Route
-            path="admin/bookings"
+            path="/admin/bookings"
             element={
               <RolebasedRoute allowedRoles={["admin"]}>
                 <BookingAdmin />
@@ -101,19 +103,19 @@ function App() {
             }
           />
           <Route
-            path="add-savings"
+            path="/admin/add-room"
             element={
               <RolebasedRoute allowedRoles={["admin"]}>
-                {/* <AddSavingsAdmin /> */}
+                <RoomAdmin />
               </RolebasedRoute>
             }
           />
 
           <Route
-            path="admin/loans"
+            path="admin/rooms"
             element={
               <RolebasedRoute allowedRoles={["admin"]}>
-                {/* <LoansAdmin /> */}
+                <ListRoomAdmin />
               </RolebasedRoute>
             }
           />

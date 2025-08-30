@@ -23,12 +23,10 @@ class CreateBookingRequest extends FormRequest
     {
         if ($this->date) {
             try {
-                // ubah dari d-m-Y ke Y-m-d (standar MySQL)
                 $this->merge([
                     'date' => \Carbon\Carbon::createFromFormat('d-m-Y', $this->date)->format('Y-m-d'),
                 ]);
             } catch (\Exception $e) {
-                // biarin tetap error, nanti rules akan tangkap
             }
         }
     }

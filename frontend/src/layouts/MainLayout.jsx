@@ -9,7 +9,6 @@ export default function MainLayout() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // Redirect ke login jika tidak authenticated
   useEffect(() => {
     if (!isAuthenticated) {
       navigate("/login");
@@ -18,10 +17,8 @@ export default function MainLayout() {
 
   const handleLogout = () => {
     dispatch(logout());
-    // Navigation akan ditangani oleh useEffect di atas
   };
 
-  // Loading state saat belum ada user data
   if (!isAuthenticated || !user) {
     return (
       <div className="flex h-screen items-center justify-center bg-base-200">
@@ -56,7 +53,6 @@ export default function MainLayout() {
           </div>
         </header>
 
-        {/* Page Content */}
         <main className="p-4 overflow-y-auto flex-1">
           <Outlet />
         </main>

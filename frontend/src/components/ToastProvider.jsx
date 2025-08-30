@@ -14,12 +14,10 @@ const ToastProvider = () => {
       draggable
       pauseOnHover
       theme="light"
-      // Custom styling
       toastStyle={{
         fontSize: "14px",
         borderRadius: "8px",
       }}
-      // Custom class untuk styling lebih lanjut
       toastClassName="custom-toast"
       bodyClassName="custom-toast-body"
       progressClassName="custom-toast-progress"

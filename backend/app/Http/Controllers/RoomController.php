@@ -39,7 +39,15 @@ class RoomController extends Controller
 
     public function update(UpdateRoomRequest $request, $id)
     {
-        $room = $this->roomService->update($id, $request->all());
+        $data = $request->all();
+
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('image', 'public');
+            $data['image'] = asset('storage/' . $path);
+        }
+
+        $room = $this->roomService->update($id, $data);
+
         return $this->success($room, "Berhasil update room", 200);
     }
     public function destroy($id)

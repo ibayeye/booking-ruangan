@@ -18,14 +18,12 @@ const RegisterPage = () => {
 
   const { loading, error, isRegistered } = useSelector((state) => state.auth);
 
-  // Redirect jika sudah login
   useEffect(() => {
     if (isRegistered) {
       navigate("/login");
     }
   }, [isRegistered, navigate]);
 
-  // Clear error saat component mount
   useEffect(() => {
     dispatch(resetRegistration());
   }, [dispatch]);

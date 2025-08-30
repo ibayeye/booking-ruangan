@@ -90,15 +90,14 @@ const BookingUser = () => {
       await api.post("/booking", payload);
       toast.success("Booking berhasil ditambahkan!");
 
-      // reset form
       setSelectedRoom(null);
       setDate("");
       setStartTime("");
       setDuration("");
       setPurpose("");
     } catch (err) {
-      console.error("Error details:", err.response?.data);
-      toast.error(err.response?.data?.msg || "Gagal tambah booking");
+      // console.log("Error message:", err.response?.data?.errors?.room_id);
+      toast.error(err.response?.data?.errors?.room_id?.[0]);
     }
   };
 

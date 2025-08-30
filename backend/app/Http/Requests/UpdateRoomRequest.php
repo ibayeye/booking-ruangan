@@ -25,16 +25,14 @@ class UpdateRoomRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string',
-            'description' => 'required|string',
+            'image' => 'nullable',
+            'name' => 'nullable',
+            'description' => 'nullable',
         ];
     }
     public function messages(): array
     {
-        return [
-            'name.required' => 'Nama wajib diisi',
-            'description.required' => 'Deskripsi wajib diisi',
-        ];
+        return [];
     }
 
     protected function failedValidation(\Illuminate\Contracts\Validation\Validator $validator)

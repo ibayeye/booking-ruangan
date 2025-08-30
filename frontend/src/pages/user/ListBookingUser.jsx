@@ -137,17 +137,25 @@ const ListBookingUser = () => {
                     <td>
                       <div className="grid gap-2">
                         <button
-                          className="btn btn-xs btn-error text-white"
+                          className="btn btn-xs btn-error"
                           onClick={() => {
                             setSelectedBooking(item);
                             setIsDeleteModalOpen(true);
                           }}
+                          disabled={
+                            item.status === "approved" ||
+                            item.status === "rejected"
+                          }
                         >
                           Hapus
                         </button>
                         <button
                           className="btn btn-xs btn-primary"
                           onClick={() => handleEditModal(item)}
+                          disabled={
+                            item.status === "approved" ||
+                            item.status === "rejected"
+                          }
                         >
                           Edit
                         </button>
