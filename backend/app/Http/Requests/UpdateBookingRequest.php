@@ -19,14 +19,18 @@ class UpdateBookingRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'purpose' => 'required|string',
+            'purpose' => 'nullable|string',
+            'room_id' => 'nullable',
+            'date' => 'nullable|date',
+            'start_time' => 'nullable',
+            'duration' => 'nullable|integer',
         ];
     }
 
     public function messages(): array
     {
         return [
-            'purpose.required'=> 'Keperluan/Keterangan wajib diisi',
+           
         ];
     }
 

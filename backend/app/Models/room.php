@@ -10,6 +10,7 @@ class Room extends Model
     use SoftDeletes;
 
     protected $fillable = [
+        "image",
         "name",
         "description",
     ];

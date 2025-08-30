@@ -21,8 +21,14 @@ class RoomController extends Controller
 
     public function create(CreateRoomRequest $request)
     {
-        $user = $this->roomService->create($request->all());
-        return $this->success($user, "Berhasil tambahkan room", 201);
+        $data = $request->all();
+
+        $path = $request->file('image')->store('image', 'public');
+        $data['image'] = asset('storage/' . $path);
+
+        $room = $this->roomService->create($data);
+
+        return $this->success($room, "Berhasil tambahkan room", 201);
     }
 
     public function getAll()

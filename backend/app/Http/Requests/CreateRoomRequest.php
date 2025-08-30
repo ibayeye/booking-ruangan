@@ -27,6 +27,7 @@ class CreateRoomRequest extends FormRequest
         return [
             'name' => 'required|string',
             'description' => 'required|string',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ];
     }
 
@@ -35,6 +36,7 @@ class CreateRoomRequest extends FormRequest
         return [
             'name.required' => 'Nama wajib diisi',
             'description.required' => 'Deskripsi wajib diisi',
+            'image.image' => 'File harus berupa gambar',
         ];
     }
 

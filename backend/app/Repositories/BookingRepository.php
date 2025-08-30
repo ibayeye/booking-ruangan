@@ -15,14 +15,16 @@ class BookingRepository implements BookingRepositoryInterface
         $data['status'] = $data['status'] ?? 'submit';
         return Booking::create($data);
     }
-    public function getByUser($userId)
-    {
-        return Booking::where('user_id', $userId)->get();
-    }
-
     public function getAll()
     {
-        return Booking::with('user')->get();
+        return Booking::with(['user', 'room'])->get();
+    }
+
+    public function getByUser($userId)
+    {
+        return Booking::with(['room']) // tambahin user juga kalau perlu
+            ->where('user_id', $userId)
+            ->get();
     }
 
     public function updateBooking($id, array $data)
