@@ -1,61 +1,92 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Booking App (Laravel 12)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+<h3>Backend Booking App</h3>
 
-## About Laravel
+Backend dari booking app ini dibuat menggunakan **Laravel 12**, **PHP 8.3.16**, **Node.js v22.18**, dan **MySQL**.  
+Project ini menyediakan API untuk frontend (React + Vite).
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Requirements
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Sebelum menjalankan project, pastikan sudah ter-install:
 
-## Learning Laravel
+-   PHP >= 8.3.16
+-   Composer >= 2.7.7
+-   Node.js v22.18 (untuk Vite & build asset)
+-   MySQL / MariaDB
+-   Git
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+---
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Setup Project
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 1. Clone Repository
 
-## Laravel Sponsors
+<code>
+git clone https://github.com/ibayeye/booking-ruangan.git
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+cd backend
+</code>
 
-### Premium Partners
+### 2. Install Depedencies
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+<code>
+composer install
 
-## Contributing
+npm install
+</code>
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 3. Copy & Konfirugrasi .env
 
-## Code of Conduct
+<code>
+Copy file .env.example
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Rename jadi .env
 
-## Security Vulnerabilities
+Ganti
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+    APP_NAME=Laravel
+    APP_ENV=local
+    APP_KEY=
+    APP_DEBUG=true
+    APP_URL=http://localhost
 
-## License
+    DB_CONNECTION=sqlite
+    # DB_HOST=127.0.0.1
+    # DB_PORT=3306
+    # DB_DATABASE=laravel
+    # DB_USERNAME=root
+    # DB_PASSWORD=
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Jadi
+
+    APP_NAME=Laravel
+    APP_ENV=local
+    APP_KEY=base64:wQzvefnK3nCD2LRtajF+w15G1FHXSjS6N1iZlNPL2pk=
+    APP_DEBUG=true
+    APP_URL=http://localhost
+
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=booking-ruangan
+    DB_USERNAME=root
+    DB_PASSWORD=
+
+</code>
+note* "Jangan lupa buat terlebih dahulu database dengan nama booking-ruangan"
+
+### 4. Generate Key, Migrasi dan Seed Database
+
+<code>
+php artisan key:generate
+
+php artisan migrate --seed
+</code>
+
+### 5. Jalankan server
+
+<code>
+php artisan serve
+</code>
