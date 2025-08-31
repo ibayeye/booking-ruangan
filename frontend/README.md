@@ -31,7 +31,21 @@ cd frontend
 npm install
 </code>
 
-### 3. Jalankan server
+### 3. Copy & Konfirugrasi .env
+
+<code>
+Copy file .env.example
+
+Rename jadi .env
+
+Ganti
+REACT_APP_API_BASE_URL=http://localhost
+
+Menjadi
+VITE_API_BASE_URL=http://localhost:8000/api
+</code>
+
+### 4. Jalankan server
 
 <code>
 npm run dev
